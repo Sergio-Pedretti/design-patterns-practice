@@ -36,5 +36,22 @@ var Builder = /** @class */ (function () {
     };
     return Builder;
 }());
-var builder = Builder.of().fase1().fase2().fase3().fase4().fase5().build();
-console.log(builder);
+var Director = /** @class */ (function () {
+    function Director() {
+    }
+    Director.prototype.setBuilder = function (builder) {
+        this.builder = builder;
+    };
+    Director.prototype.buildMinimalViableProduct = function () {
+        this.builder.fase1().fase3().build();
+    };
+    Director.prototype.buildFullFeaturedProduct = function () {
+        this.builder.fase1().fase2().fase3().fase4().fase5().build();
+    };
+    return Director;
+}());
+var builder = Builder.of();
+var director = new Director();
+director.setBuilder(builder);
+director.buildMinimalViableProduct();
+director.buildFullFeaturedProduct();

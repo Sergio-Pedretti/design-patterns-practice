@@ -37,6 +37,25 @@ class Builder {
     }
 }
 
-const builder = Builder.of().fase1().fase2().fase3().fase4().fase5().build()
+class Director {
+    private builder: Builder;
 
-console.log(builder)
+    public setBuilder(builder: Builder): void {
+        this.builder = builder;
+    }
+
+    public buildMinimalViableProduct(): void {
+        this.builder.fase1().fase3().build()
+    }
+
+    public buildFullFeaturedProduct(): void {
+        this.builder.fase1().fase2().fase3().fase4().fase5().build()
+    }
+}
+
+const builder = Builder.of()
+
+const director = new Director()
+director.setBuilder(builder)
+director.buildMinimalViableProduct()
+director.buildFullFeaturedProduct()
