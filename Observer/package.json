@@ -1,0 +1,12 @@
+{
+  "name": "Observer",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "yarn tsc && node observer.js"
+  },
+  "devDependencies": {
+    "typescript": "^4.6.3"
+  }
+}
