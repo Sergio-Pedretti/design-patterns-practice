@@ -1,0 +1,22 @@
+{
+  "name": "design-patterns-practice",
+  "version": "1.0.0",
+  "description": "* Learn design patterns and write my own pieces  * Understand best use cases and when to not do it",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sergio-Pedretti/design-patterns-practice.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sergio-Pedretti/design-patterns-practice/issues"
+  },
+  "homepage": "https://github.com/Sergio-Pedretti/design-patterns-practice#readme",
+  "devDependencies": {
+    "typescript": "^5.1.3"
+  }
+}
