@@ -1,57 +1,57 @@
-var Builder = /** @class */ (function () {
-    function Builder(incluidas) {
+var GenericBuilder = /** @class */ (function () {
+    function GenericBuilder(incluidas) {
         if (incluidas === void 0) { incluidas = []; }
         this.incluidas = incluidas;
     }
-    Builder.of = function () {
-        return new Builder();
+    GenericBuilder.of = function () {
+        return new GenericBuilder();
     };
-    Builder.prototype.fase1 = function () {
+    GenericBuilder.prototype.fase1 = function () {
         console.log('Fase 1 incluida');
         this.incluidas.push('Fase 1');
         return this;
     };
-    Builder.prototype.fase2 = function () {
+    GenericBuilder.prototype.fase2 = function () {
         console.log('Fase 2 incluida');
         this.incluidas.push('Fase 2');
         return this;
     };
-    Builder.prototype.fase3 = function () {
+    GenericBuilder.prototype.fase3 = function () {
         console.log('Fase 3 incluida');
         this.incluidas.push('Fase 3');
         return this;
     };
-    Builder.prototype.fase4 = function () {
+    GenericBuilder.prototype.fase4 = function () {
         console.log('Fase 4 incluida');
         this.incluidas.push('Fase 4');
         return this;
     };
-    Builder.prototype.fase5 = function () {
+    GenericBuilder.prototype.fase5 = function () {
         console.log('Fase 5 incluida');
         this.incluidas.push('Fase 5');
         return this;
     };
-    Builder.prototype.build = function () {
+    GenericBuilder.prototype.build = function () {
         return this.incluidas;
     };
-    return Builder;
+    return GenericBuilder;
 }());
-var Director = /** @class */ (function () {
-    function Director() {
+var GenericDirector = /** @class */ (function () {
+    function GenericDirector() {
     }
-    Director.prototype.setBuilder = function (builder) {
+    GenericDirector.prototype.setBuilder = function (builder) {
         this.builder = builder;
     };
-    Director.prototype.buildMinimalViableProduct = function () {
+    GenericDirector.prototype.buildMinimalViableProduct = function () {
         this.builder.fase1().fase3().build();
     };
-    Director.prototype.buildFullFeaturedProduct = function () {
+    GenericDirector.prototype.buildFullFeaturedProduct = function () {
         this.builder.fase1().fase2().fase3().fase4().fase5().build();
     };
-    return Director;
+    return GenericDirector;
 }());
-var builder = Builder.of();
-var director = new Director();
+var builder = GenericBuilder.of();
+var director = new GenericDirector();
 director.setBuilder(builder);
 director.buildMinimalViableProduct();
 director.buildFullFeaturedProduct();

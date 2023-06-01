@@ -1,10 +1,18 @@
-class Builder {
+interface Builder {
+    fase1: () => Builder
+    fase2: () => Builder
+    fase3: () => Builder
+    fase4: () => Builder
+    fase5: () => Builder
+    build: () => string[]
+}
+class GenericBuilder implements Builder {
     private constructor (
     private readonly incluidas: string[] = []
   ) {}
 
-    static of(){
-        return new Builder()
+    static of(): Builder {
+        return new GenericBuilder()
     }
 
     fase1(): Builder {
@@ -37,7 +45,13 @@ class Builder {
     }
 }
 
-class Director {
+interface Director {
+    setBuilder: (builder: Builder) => void
+    buildMinimalViableProduct: () => void
+    buildFullFeaturedProduct: () => void
+}
+
+class GenericDirector implements Director {
     private builder: Builder;
 
     public setBuilder(builder: Builder): void {
@@ -53,9 +67,9 @@ class Director {
     }
 }
 
-const builder = Builder.of()
+const builder = GenericBuilder.of()
 
-const director = new Director()
+const director = new GenericDirector()
 director.setBuilder(builder)
 director.buildMinimalViableProduct()
 director.buildFullFeaturedProduct()
