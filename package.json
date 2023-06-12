@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Sergio-Pedretti/design-patterns-practice#readme",
   "devDependencies": {
+    "@types/node": "^20.3.0",
     "typescript": "^5.1.3"
   }
 }
