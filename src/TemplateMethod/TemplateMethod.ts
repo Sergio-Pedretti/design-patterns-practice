@@ -92,7 +92,7 @@ class ConcreteClass2 extends AbstractClass {
  * code does not have to know the concrete class of an object it works with, as
  * long as it works with objects through the interface of their base class.
  */
-function clientCode(abstractClass: AbstractClass) {
+export function clientCode(abstractClass: AbstractClass) {
   // ...
   abstractClass.templateMethod();
   // ...

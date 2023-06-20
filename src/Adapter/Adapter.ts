@@ -23,7 +23,7 @@ class Adapter extends MinhaLingua {
   }
 }
 
-function clientCode(target: MinhaLingua) {
+export function clientCode(target: MinhaLingua) {
   console.log(target.Portugues());
 }
 

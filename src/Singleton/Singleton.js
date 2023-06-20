@@ -1,15 +1,15 @@
-var Database = /** @class */ (function () {
-    function Database() {
+"use strict";
+class Database {
+    constructor() {
         Database.instance = new Database();
     }
-    Database.getInstance = function () {
+    static getInstance() {
         if (Database.instance === null) {
             return new Database();
         }
         return Database.instance;
-    };
-    return Database;
-}());
-var firstInstance = Database.getInstance();
-var secondInstance = Database.getInstance();
+    }
+}
+const firstInstance = Database.getInstance();
+const secondInstance = Database.getInstance();
 console.log(firstInstance === secondInstance);

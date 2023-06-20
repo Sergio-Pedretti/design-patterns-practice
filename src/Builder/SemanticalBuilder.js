@@ -1,57 +1,56 @@
-var BuildHouse = /** @class */ (function () {
-    function BuildHouse(houseParts) {
-        if (houseParts === void 0) { houseParts = []; }
+"use strict";
+class BuildHouse {
+    constructor(houseParts = []) {
         this.houseParts = houseParts;
     }
-    BuildHouse.of = function () {
+    static of() {
         return new BuildHouse();
-    };
-    BuildHouse.prototype.buildWalls = function () {
+    }
+    buildWalls() {
         console.log('Built Walls');
         this.houseParts.push('Walls');
         return this;
-    };
-    BuildHouse.prototype.buildRoof = function () {
+    }
+    buildRoof() {
         console.log('Built Roof');
         this.houseParts.push('Roof');
         return this;
-    };
-    BuildHouse.prototype.buildFloor = function () {
+    }
+    buildFloor() {
         console.log('Built Floor');
         this.houseParts.push('Floor');
         return this;
-    };
-    BuildHouse.prototype.buildPool = function () {
+    }
+    buildPool() {
         console.log('Built Pool');
         this.houseParts.push('Pool');
         return this;
-    };
-    BuildHouse.prototype.buildAttic = function () {
+    }
+    buildAttic() {
         console.log('Built Attic');
         this.houseParts.push('Attic');
         return this;
-    };
-    BuildHouse.prototype.buildBasement = function () {
+    }
+    buildBasement() {
         console.log('Built Basement');
         this.houseParts.push('Basement');
         return this;
-    };
-    BuildHouse.prototype.buildGarage = function () {
+    }
+    buildGarage() {
         console.log('Built Garage');
         this.houseParts.push('Garage');
         return this;
-    };
-    BuildHouse.prototype.buildBackyard = function () {
+    }
+    buildBackyard() {
         console.log('Built Backyard');
         this.houseParts.push('Backyard');
         return this;
-    };
-    BuildHouse.prototype.build = function () {
+    }
+    build() {
         return this.houseParts;
-    };
-    return BuildHouse;
-}());
-var smallHouse = BuildHouse.of().buildWalls().buildRoof().buildFloor().build();
+    }
+}
+const smallHouse = BuildHouse.of().buildWalls().buildRoof().buildFloor().build();
 console.log(smallHouse);
-var bigHouse = BuildHouse.of().buildWalls().buildRoof().buildFloor().buildGarage().buildPool().buildBackyard().build();
+const bigHouse = BuildHouse.of().buildWalls().buildRoof().buildFloor().buildGarage().buildPool().buildBackyard().build();
 console.log(bigHouse);

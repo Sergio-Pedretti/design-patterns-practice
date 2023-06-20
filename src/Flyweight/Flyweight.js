@@ -1,40 +1,39 @@
-var LocationDelivery = /** @class */ (function () {
-    function LocationDelivery(intrinsicState) {
+"use strict";
+class LocationDelivery {
+    constructor(intrinsicState) {
         this.intrinsicState = intrinsicState;
     }
-    LocationDelivery.prototype.deliver = function (name, number) {
+    deliver(name, number) {
         console.log('Entrega para %s', name);
         console.log('Em', this.intrinsicState.street, this.intrinsicState.city);
         console.log('Número: ', number);
         console.log('######');
-    };
-    return LocationDelivery;
-}());
-var DeliveryFactory = /** @class */ (function () {
-    function DeliveryFactory() {
+    }
+}
+class DeliveryFactory {
+    constructor() {
         this.locations = {};
     }
-    DeliveryFactory.prototype.generateKey = function (input) {
-        return Object.values(input).map(function (item) { return item.replace(/\s+/, ''); }).join('_');
-    };
-    DeliveryFactory.prototype.makeLocation = function (intrinsicState) {
-        var key = this.generateKey(intrinsicState).toLowerCase();
+    generateKey(input) {
+        return Object.values(input).map(item => item.replace(/\s+/, '')).join('_');
+    }
+    makeLocation(intrinsicState) {
+        const key = this.generateKey(intrinsicState).toLowerCase();
         if (key in this.locations)
             return this.locations[key];
         this.locations[key] = new LocationDelivery(intrinsicState);
         return this.locations[key];
-    };
-    DeliveryFactory.prototype.getLocation = function () {
+    }
+    getLocation() {
         return this.locations;
-    };
-    return DeliveryFactory;
-}());
-var deliveryContext = function (factory, name, number, street, city) {
-    var location = factory.makeLocation({ street: street, city: city });
+    }
+}
+const deliveryContext = (factory, name, number, street, city) => {
+    const location = factory.makeLocation({ street, city });
     location.deliver(name, number);
 };
-var mainCode = function () {
-    var myFactory = new DeliveryFactory();
+const mainCode = () => {
+    const myFactory = new DeliveryFactory();
     console.time('1');
     deliveryContext(myFactory, 'Sérgio', '1054', 'Avenida Silva Jardim', 'Curitiba');
     console.timeEnd('1');

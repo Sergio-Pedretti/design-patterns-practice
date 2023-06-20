@@ -1,36 +1,35 @@
-var FirstStep = /** @class */ (function () {
-    function FirstStep() {
+"use strict";
+class FirstStep {
+    constructor() {
         this.next = null;
     }
-    FirstStep.prototype.setNext = function (request) {
+    setNext(request) {
         this.next = request;
-    };
-    FirstStep.prototype.handler = function (request) {
+    }
+    handler(request) {
         console.log('Primeiro passo');
         if (this.next !== null) {
             this.next.handler(request);
         }
-    };
-    return FirstStep;
-}());
-var SecondStep = /** @class */ (function () {
-    function SecondStep() {
+    }
+}
+class SecondStep {
+    constructor() {
         this.next = null;
     }
-    SecondStep.prototype.setNext = function (request) {
+    setNext(request) {
         this.next = request;
-    };
-    SecondStep.prototype.handler = function (request) {
+    }
+    handler(request) {
         console.log('Segundo passo');
         if (this.next !== null) {
             this.next.handler(request);
         }
-    };
-    return SecondStep;
-}());
-var sourceCode = function () {
-    var c1 = new FirstStep();
-    var c2 = new SecondStep();
+    }
+}
+const sourceCode = () => {
+    const c1 = new FirstStep();
+    const c2 = new SecondStep();
     c1.setNext(c2);
     c1.handler('OK');
 };

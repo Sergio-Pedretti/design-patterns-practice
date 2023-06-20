@@ -52,7 +52,7 @@ interface Director {
 }
 
 class GenericDirector implements Director {
-    private builder: Builder;
+    constructor(private builder: Builder){}
 
     public setBuilder(builder: Builder): void {
         this.builder = builder;
@@ -69,7 +69,6 @@ class GenericDirector implements Director {
 
 const builder = GenericBuilder.of()
 
-const director = new GenericDirector()
-director.setBuilder(builder)
+const director = new GenericDirector(builder)
 director.buildMinimalViableProduct()
 director.buildFullFeaturedProduct()
