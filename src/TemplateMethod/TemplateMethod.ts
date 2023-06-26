@@ -1,106 +1,50 @@
-/**
- * The Abstract Class defines a template method that contains a skeleton of some
- * algorithm, composed of calls to (usually) abstract primitive operations.
- *
- * Concrete subclasses should implement these operations, but leave the template
- * method itself intact.
- */
-abstract class AbstractClass {
-  /**
-   * The template method defines the skeleton of an algorithm.
-   */
-  public templateMethod(): void {
-    this.baseOperation1();
-    this.requiredOperations1();
-    this.baseOperation2();
-    this.hook1();
-    this.requiredOperation2();
-    this.baseOperation3();
-    this.hook2();
+abstract class Template {
+  readonly templateMetod = ():void => {
+    this.step1()
+    this.step2()
+    this.step3()
+    this.step4()
   }
 
-  /**
-   * These operations already have implementations.
-   */
-  protected baseOperation1(): void {
-    console.log("AbstractClass says: I am doing the bulk of the work");
+  abstract step1 ():void
+
+  abstract step2 ():void 
+
+  private step3 () {
+    console.log('Formatando Dados')
   }
 
-  protected baseOperation2(): void {
-    console.log(
-      "AbstractClass says: But I let subclasses override some operations"
-    );
-  }
-
-  protected baseOperation3(): void {
-    console.log(
-      "AbstractClass says: But I am doing the bulk of the work anyway"
-    );
-  }
-
-  /**
-   * These operations have to be implemented in subclasses.
-   */
-  protected abstract requiredOperations1(): void;
-
-  protected abstract requiredOperation2(): void;
-
-  /**
-   * These are "hooks." Subclasses may override them, but it's not mandatory
-   * since the hooks already have default (but empty) implementation. Hooks
-   * provide additional extension points in some crucial places of the
-   * algorithm.
-   */
-  protected hook1(): void {}
-
-  protected hook2(): void {}
-}
-
-/**
- * Concrete classes have to implement all abstract operations of the base class.
- * They can also override some operations with a default implementation.
- */
-class ConcreteClass1 extends AbstractClass {
-  protected requiredOperations1(): void {
-    console.log("ConcreteClass1 says: Implemented Operation1");
-  }
-
-  protected requiredOperation2(): void {
-    console.log("ConcreteClass1 says: Implemented Operation2");
+  private step4 () {
+    console.log('Exibindo Dados')
   }
 }
 
-/**
- * Usually, concrete classes override only a fraction of base class' operations.
- */
-class ConcreteClass2 extends AbstractClass {
-  protected requiredOperations1(): void {
-    console.log("ConcreteClass2 says: Implemented Operation1");
+class PDF extends Template {
+  step1(): void {
+    console.log('Parseando Documento PDF')
   }
 
-  protected requiredOperation2(): void {
-    console.log("ConcreteClass2 says: Implemented Operation2");
-  }
-
-  protected hook1(): void {
-    console.log("ConcreteClass2 says: Overridden Hook1");
+  step2(): void {
+    console.log('Extraindo Dados do PDF')
   }
 }
 
-/**
- * The client code calls the template method to execute the algorithm. Client
- * code does not have to know the concrete class of an object it works with, as
- * long as it works with objects through the interface of their base class.
- */
-export function clientCode(abstractClass: AbstractClass) {
-  // ...
-  abstractClass.templateMethod();
-  // ...
+class Excel extends Template {
+  step1(): void {
+    console.log('Parseando Documento Excel')
+  }
+
+  step2(): void {
+    console.log('Extraindo Dados do Excel')
+  }
 }
 
-console.log("Same client code can work with different subclasses:");
-clientCode(new ConcreteClass1());
-console.log("");
 
-console.log("Same client code can work with different subclasses:");
-clientCode(new ConcreteClass2());
+export const main = () => {
+  const pdf = new PDF()
+  pdf.templateMetod()
+  const excel = new Excel()
+  excel.templateMetod()
+}
+
+main()
